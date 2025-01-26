@@ -1,22 +1,26 @@
 const mongoose = require("mongoose");
 
+// User Schema
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 30,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 8,
-  },
+    cnic: {
+        type: String,
+        required: [true, "CNIC is required"],
+        minlength: [13, "CNIC must be exactly 13 characters long"],
+        maxlength: [13, "CNIC must be exactly 13 characters long"]
+    },
+    email: {
+        type: String,
+        required: [true, "Email is required"],
+        unique: true,
+        match: [/^\S+@\S+\.\S+$/, "Please provide a valid email"]
+    },
+    name: {
+        type: String,
+        required: [true, "Name is required"],
+        trim: true
+    }
 });
 
-module.exports = mongoose.model("User", userSchema);
+// Export the Model
+const User = mongoose.model("User", userSchema);
+module.exports = User;

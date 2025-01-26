@@ -1,7 +1,7 @@
 // MongoDB Connection
 const mongoose = require("mongoose");
 
-const mongo_uri = "mongodb://localhost:27017/hackathonDB"
+const mongo_uri = "mongodb+srv://aliraza:NTZGL4M4sVwR8Pw3@hackathon.vtoiu.mongodb.net/hackathonDB"
 
 const connectDB = async () => {
     try {
